@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#12120f"/><rect x="8" y="8" width="48" height="48" fill="none" stroke="#a9764c"/><text x="32" y="38" text-anchor="middle" fill="#f3eee5" font-family="Georgia,serif" font-size="17">КМ</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="2" fill="#090908"/>
+  <rect x="7.5" y="7.5" width="49" height="49" fill="none" stroke="#eee9df" stroke-width="2"/>
+  <text x="32" y="39" text-anchor="middle" fill="#eee9df" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="0.5">КМ</text>
+</svg>
