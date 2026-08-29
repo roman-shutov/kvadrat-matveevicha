@@ -55,4 +55,21 @@ if(!reduced){
   });
 }
 
+if(!reduced){
+  const drifting=[...document.querySelectorAll('.drift')];
+  let driftTick=false;
+  const paintDrift=()=>{
+    drifting.forEach(el=>{
+      const rect=el.getBoundingClientRect();
+      if(rect.bottom>0&&rect.top<innerHeight){
+        const progress=(rect.top+rect.height/2-innerHeight/2)/innerHeight;
+        el.style.transform=`translate3d(0,${progress*Number(el.dataset.drift||0)}px,0)`;
+      }
+    });
+    driftTick=false;
+  };
+  addEventListener('scroll',()=>{if(!driftTick){requestAnimationFrame(paintDrift);driftTick=true}},{passive:true});
+  paintDrift();
+}
+
 document.querySelector('[data-year]').textContent=new Date().getFullYear();
