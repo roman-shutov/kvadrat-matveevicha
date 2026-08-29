@@ -44,3 +44,16 @@ h1,h2,h3,blockquote,.hero-foot>p,.process-line span,.audience-list span,.marquee
   .work-band-track{height:auto;min-height:0;grid-template-columns:1fr 1fr}.work-band-track img{height:62vw}.work-band-track img:nth-child(3){grid-column:1/-1;height:78vw}.work-band-track img:last-child{display:none}
 }
 @media(prefers-reduced-motion:reduce){.reel-track{animation:none}.drift{transform:none!important}}
+
+.master-network{padding:10rem var(--pad);overflow:hidden}
+.network-head{display:grid;grid-template-columns:1.65fr .65fr;gap:10%;align-items:end;margin:7rem 0}
+.network-head h2{font-size:clamp(3rem,6.5vw,7rem);line-height:1;letter-spacing:-.04em}
+.network-head>p{font-size:.82rem;line-height:1.85;max-width:27rem}
+.network-grid{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line-dark);border-left:1px solid var(--line-dark)}
+.network-grid article{min-height:17rem;padding:1.5rem;border-right:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);display:flex;flex-direction:column;transition:background .4s,color .4s,transform .4s}
+.network-grid article:hover{background:var(--black);color:var(--ivory);transform:translateY(-.45rem);position:relative;z-index:2}
+.network-grid article>span{font-size:.53rem;color:var(--bronze)}.network-grid h3{font-size:clamp(1.65rem,2.4vw,2.7rem);margin:auto 0 1rem}.network-grid p{font-size:.63rem;line-height:1.65;opacity:.72}
+.network-note{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(2.25rem,5vw,5.4rem);line-height:1.1;text-align:center;margin:10rem auto 1rem;max-width:70rem}
+@media(max-width:1050px){.network-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.master-network{padding:6rem 1.25rem}.network-head{grid-template-columns:1fr;margin:5rem 0}.network-head>p{margin-top:2rem}.network-grid{grid-template-columns:1fr 1fr}.network-grid article{min-height:13rem;padding:1.15rem}.network-note{margin-top:7rem}}
+@media(max-width:520px){.network-grid{grid-template-columns:1fr}.network-grid article{min-height:11rem}.network-head h2{font-size:2.7rem}}
