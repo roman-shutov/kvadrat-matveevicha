@@ -67,3 +67,11 @@ h1,h2,h3,blockquote,.hero-foot>p,.process-line span,.audience-list span,.marquee
 @media(max-width:1050px){.network-map{grid-template-columns:repeat(3,1fr)}.network-hub{grid-column:2;grid-row:2/4}.network-map:before{width:55%}.network-map:after{width:78%}}
 @media(max-width:700px){.network-map{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(10rem,auto)}.network-hub{grid-column:1/-1;grid-row:1;min-height:19rem}.network-map:before,.network-map:after{display:none}.network-node h3{font-size:1.35rem}}
 @media(max-width:420px){.network-map{grid-template-columns:1fr}.network-node{min-height:9.5rem}.network-hub{grid-column:1}}
+
+/* Keep the portfolio reel on one precise baseline while it glides horizontally. */
+.reel-track{align-items:stretch}
+.reel-item,.reel-item.tall{margin-top:0;height:clamp(25rem,35vw,39rem);border:1px solid rgba(255,255,255,.1)}
+.reel-item img{filter:saturate(.9) contrast(1.08);object-position:center center}
+.reel-item:hover img{filter:saturate(1.05) contrast(1.08)}
+.reel-item figcaption{backdrop-filter:none;background:rgba(8,8,7,.82)}
+@media(max-width:900px){.reel-item,.reel-item.wide,.reel-item.tall{margin-top:0;height:105vw;max-height:36rem}}
