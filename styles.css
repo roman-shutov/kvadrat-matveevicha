@@ -153,3 +153,4 @@ h1,h2,h3,blockquote,.hero-foot>p,.process-line span,.audience-list span,.marquee
 [data-contact-zone]{cursor:pointer}[data-contact-zone] a,[data-contact-zone] button,[data-contact-zone] article,[data-contact-zone] img,[data-contact-zone] .network-map,[data-contact-zone] .process-line{cursor:auto}
 @media(max-width:700px){.lead-trigger{right:1rem;bottom:1rem;min-width:12rem;height:3.5rem}.lead-trigger span{font-size:.52rem}.contact-panel{grid-template-columns:1fr;padding:5.5rem 1.25rem 2rem;gap:1.5rem}.contact-index{display:none}.contact-copy h2{font-size:clamp(3rem,14vw,5rem)}.contact-copy>p:last-child{margin-top:1.5rem}.contact-actions{grid-column:1}.contact-actions>a{min-height:4.7rem}.contact-foot{display:none}.contact-close{right:1.25rem;top:1.25rem}}
 @media(prefers-reduced-motion:reduce){.lead-trigger,.contact-panel{transition:none}}
+.contacts a[href^="tel:"]{order:1}.contacts a[href^="https://max.ru"]{order:2}.contacts a[href^="https://wa.me"]{order:3}
