@@ -1,0 +1,10 @@
+const header=document.querySelector('[data-header]');
+const toggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('.site-nav');
+const setHeader=()=>header.classList.toggle('scrolled',scrollY>40);
+addEventListener('scroll',setHeader,{passive:true});setHeader();
+toggle.addEventListener('click',()=>{const open=document.body.classList.toggle('menu-open');toggle.setAttribute('aria-expanded',String(open));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{document.body.classList.remove('menu-open');toggle.setAttribute('aria-expanded','false');}));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelector('[data-year]').textContent=new Date().getFullYear();
