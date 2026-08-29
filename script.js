@@ -73,3 +73,32 @@ if(!reduced){
 }
 
 document.querySelector('[data-year]').textContent=new Date().getFullYear();
+
+const contactDialog=document.querySelector('.contact-dialog');
+const openContact=()=>{
+  if(contactDialog.open)return;
+  contactDialog.showModal();
+  document.body.classList.add('lead-open');
+};
+const closeContact=()=>{
+  if(!contactDialog.open)return;
+  contactDialog.close();
+  document.body.classList.remove('lead-open');
+};
+
+document.querySelectorAll('[data-open-contact]').forEach(trigger=>trigger.addEventListener('click',event=>{
+  event.preventDefault();
+  openContact();
+}));
+document.querySelector('[data-close-contact]').addEventListener('click',closeContact);
+contactDialog.addEventListener('click',event=>{if(event.target===contactDialog)closeContact()});
+contactDialog.addEventListener('close',()=>document.body.classList.remove('lead-open'));
+
+const setLeadTrigger=()=>document.body.classList.toggle('lead-ready',scrollY>innerHeight*.58);
+addEventListener('scroll',setLeadTrigger,{passive:true});setLeadTrigger();
+
+document.querySelectorAll('[data-contact-zone]').forEach(zone=>zone.addEventListener('click',event=>{
+  if(event.target.closest('a,button,article,img,.network-map,.process-line'))return;
+  if(getSelection()?.toString())return;
+  openContact();
+}));
