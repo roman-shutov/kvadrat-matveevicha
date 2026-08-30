@@ -32,18 +32,19 @@ h1,h2,h3,blockquote,.hero-foot>p,.process-line span,.audience-list span,.marquee
 .essay-quote{grid-column:7/13;grid-row:7/11;align-self:center;font-size:clamp(1.7rem,3vw,3.4rem);line-height:1.15;position:relative;z-index:2;padding-left:2rem}
 
 .work-band{padding:0 0 4rem;overflow:hidden;border-top:1px solid var(--line-light)}
-.work-band-track{height:31vw;min-height:20rem;max-height:34rem;display:grid;grid-template-columns:1.1fr .8fr 1.2fr .85fr 1fr;gap:3px}
-.work-band-track img{filter:grayscale(.2) saturate(.65);transition:flex .6s,filter .6s,transform .8s}.work-band-track img:hover{filter:saturate(1);transform:scale(1.02);z-index:2}
+.work-band-track{height:clamp(22rem,32vw,34rem);display:flex;width:max-content;gap:3px;animation:workBandGlide 30s cubic-bezier(.45,0,.55,1) infinite alternate;will-change:transform}
+.work-band-track img{width:clamp(19rem,27vw,31rem);flex:0 0 auto;filter:grayscale(.12) saturate(.72);transition:filter .6s,transform .8s cubic-bezier(.16,1,.3,1)}.work-band-track img:nth-child(3n+1){width:clamp(25rem,36vw,42rem)}.work-band-track img:hover{filter:saturate(1.05);transform:scale(1.02);z-index:2}
 .work-band>p{padding:1.5rem var(--pad) 0;font-size:.55rem;text-transform:uppercase;letter-spacing:.19em;text-align:center;opacity:.6}
 
 @keyframes reelGlide{from{transform:translateX(2vw)}to{transform:translateX(-42vw)}}
+@keyframes workBandGlide{from{transform:translateX(0)}to{transform:translateX(calc(100vw - 100%))}}
 
 @media(max-width:900px){
   .portfolio-reel{padding:4rem 0 5rem}.reel-track{animation:none;overflow-x:auto;width:auto;padding:0 1.25rem;scroll-snap-type:x mandatory}.reel-item,.reel-item.wide{width:78vw;min-width:78vw;height:105vw;max-height:36rem;scroll-snap-align:center}.reel-item.tall{margin-top:2rem}
   .visual-essay{padding:6rem 1.25rem 7rem}.essay-heading{grid-template-columns:1fr;margin-bottom:5rem}.essay-heading .overline{margin-bottom:2rem}.essay-grid{grid-template-columns:1fr 1fr;grid-template-rows:none;gap:.65rem}.essay-grid figure{grid-column:auto;grid-row:auto;height:64vw}.essay-grid .essay-b,.essay-grid .essay-d{height:88vw}.essay-quote{grid-column:1/-1;grid-row:auto;font-size:2rem;padding:3rem .5rem}
-  .work-band-track{height:auto;min-height:0;grid-template-columns:1fr 1fr}.work-band-track img{height:62vw}.work-band-track img:nth-child(3){grid-column:1/-1;height:78vw}.work-band-track img:last-child{display:none}
+  .work-band-track{height:auto;width:auto;overflow-x:auto;animation:none;padding:0 1.25rem;scroll-snap-type:x mandatory;scrollbar-width:none}.work-band-track::-webkit-scrollbar{display:none}.work-band-track img,.work-band-track img:nth-child(3n+1){display:block;width:78vw;min-width:78vw;height:78vw;scroll-snap-align:center}
 }
-@media(prefers-reduced-motion:reduce){.reel-track{animation:none}.drift{transform:none!important}}
+@media(prefers-reduced-motion:reduce){.reel-track,.work-band-track{animation:none}.drift{transform:none!important}}
 
 .master-network{padding:10rem var(--pad);overflow:hidden}
 .network-head{display:grid;grid-template-columns:1.65fr .65fr;gap:10%;align-items:end;margin:7rem 0}
