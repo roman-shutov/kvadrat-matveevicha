@@ -170,3 +170,31 @@ h1,h2,h3,blockquote,.hero-foot>p,.process-line span,.audience-list span,.marquee
 .audience-list span{cursor:pointer;transition:padding .3s,color .3s,opacity .3s}.audience-list span:hover,.audience-list span.is-active{padding-left:1rem;color:var(--bronze)}
 @media(max-width:900px){.audience-counter{left:1.25rem;bottom:1.25rem}}
 @media(prefers-reduced-motion:reduce){.audience-image>img{transition:none;transform:none}}
+
+/* Ultrawide / 4K editorial calibration: full-bleed atmosphere, controlled content width. */
+@media(min-width:1900px){
+  :root{--pad:max(5rem,calc((100vw - 1840px)/2))}
+  .hero-title{font-size:clamp(8rem,8.5vw,10.5rem);max-width:112rem}
+  .hero-foot{padding-left:28%;max-width:112rem}
+  .intro,.projects,.transformation,.capabilities,.master-network,.process{padding-top:8rem}
+  .intro-grid{gap:6%;margin:5.5rem 0 6.5rem}.intro-text{margin-top:2.5rem}
+  .intro-principle{margin-top:-1rem;margin-bottom:6.5rem}
+  .projects-head{margin:5.5rem 0 6.5rem}.projects-head h2,.transformation-top h2,.capability-intro h2,.process>h2,.audience h2{font-size:clamp(4.5rem,4.4vw,6rem)}
+  .project{grid-template-columns:minmax(0,1.42fr) minmax(22rem,.58fr);gap:4%;margin-bottom:8rem}.project-reverse{grid-template-columns:minmax(22rem,.62fr) minmax(0,1.38fr)}
+  .project-feature .project-media{height:48rem}.project-reverse .project-media{height:44rem}.project-pair{gap:5%;margin-bottom:9rem}.project-card-low{margin-top:7rem}.project-card .project-media{height:40rem}.project-card-low .project-media{height:37rem}
+  .transformation-top{margin:5.5rem 0 6rem}.transform-showcase figure{height:31rem}
+  .visual-essay{padding-top:8rem;padding-bottom:9rem}.essay-heading{margin-bottom:5.5rem}.essay-grid{grid-template-rows:repeat(10,5rem);max-width:1840px;margin-inline:auto}
+  .capability-grid{gap:7%;margin-top:5.5rem}.capability-thumb{height:21rem}
+  .network-head{margin:5.5rem 0}.network-note{margin-top:7rem}
+  .process>h2{margin:5.5rem 0}.process blockquote{margin:8rem 0 2rem}
+  .conceal-copy,.audience-copy{padding-left:clamp(8rem,8vw,18rem);padding-right:clamp(8rem,8vw,18rem)}
+  .audience h2{margin:5.5rem 0 4rem}.audience-list span{font-size:clamp(1.5rem,1.45vw,2rem)}
+  footer>h2{font-size:clamp(6rem,6.5vw,8rem)}
+}
+
+@media(min-width:3000px){
+  .conceal,.audience{grid-template-columns:1fr 1fr;max-width:2560px;margin-inline:auto}
+  .conceal{box-shadow:0 0 0 100vmax var(--black);clip-path:inset(0 -100vmax)}
+  .audience{box-shadow:0 0 0 100vmax var(--black);clip-path:inset(0 -100vmax)}
+  .conceal-copy,.audience-copy{padding-left:9rem;padding-right:9rem}
+}
