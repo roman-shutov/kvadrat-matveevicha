@@ -75,7 +75,9 @@ if(!reduced){
 document.querySelector('[data-year]').textContent=new Date().getFullYear();
 
 const contactDialog=document.querySelector('.contact-dialog');
-const openContact=()=>{
+const contactContext=document.querySelector('[data-contact-context]');
+const openContact=(topic='Связаться с нами')=>{
+  if(contactContext)contactContext.textContent=topic;
   if(contactDialog.open)return;
   contactDialog.showModal();
   document.body.classList.add('lead-open');
@@ -89,10 +91,10 @@ const closeContact=()=>{
 document.querySelectorAll('[data-open-contact]').forEach(trigger=>{
   trigger.addEventListener('click',event=>{
     event.preventDefault();
-    openContact();
+    openContact(trigger.dataset.contactTopic);
   });
   if(trigger.matches('[role="button"]'))trigger.addEventListener('keydown',event=>{
-    if(event.key==='Enter'||event.key===' '){event.preventDefault();openContact()}
+    if(event.key==='Enter'||event.key===' '){event.preventDefault();openContact(trigger.dataset.contactTopic)}
   });
 });
 document.querySelector('[data-close-contact]').addEventListener('click',closeContact);
@@ -101,12 +103,6 @@ contactDialog.addEventListener('close',()=>document.body.classList.remove('lead-
 
 const setLeadTrigger=()=>document.body.classList.toggle('lead-ready',scrollY>innerHeight*.58);
 addEventListener('scroll',setLeadTrigger,{passive:true});setLeadTrigger();
-
-document.querySelectorAll('[data-contact-zone]').forEach(zone=>zone.addEventListener('click',event=>{
-  if(event.target.closest('a,button,article,img,.network-map,.process-line'))return;
-  if(getSelection()?.toString())return;
-  openContact();
-}));
 
 const craftHub=document.querySelector('.network-hub');
 const craftImage=craftHub?.querySelector('.network-hub-image');
@@ -141,6 +137,9 @@ craftNodes.forEach(node=>{
 const audienceImages=[...document.querySelectorAll('.audience-image>img')];
 const audienceItems=[...document.querySelectorAll('[data-audience-slide]')];
 const audienceCurrent=document.querySelector('[data-audience-current]');
+const audienceCta=document.querySelector('.audience-cta');
+const audienceCtaText=document.querySelector('[data-audience-cta]');
+const audienceTopics=['Обсудить частную резиденцию','Обсудить проект с дизайнером или архитектором','Обсудить интерьер ресторана или отеля','Обсудить бутик или галерею','Обсудить премиальный офис'];
 let audienceIndex=0;
 let audienceTimer;
 const showAudience=index=>{
@@ -148,6 +147,7 @@ const showAudience=index=>{
   audienceImages.forEach((image,i)=>image.classList.toggle('is-active',i===audienceIndex));
   audienceItems.forEach(item=>item.classList.toggle('is-active',Number(item.dataset.audienceSlide)===audienceIndex));
   if(audienceCurrent)audienceCurrent.textContent=String(audienceIndex+1).padStart(2,'0');
+  if(audienceCta){audienceCta.dataset.contactTopic=audienceTopics[audienceIndex];audienceCtaText.textContent=audienceTopics[audienceIndex]}
 };
 const runAudience=()=>{
   clearInterval(audienceTimer);
