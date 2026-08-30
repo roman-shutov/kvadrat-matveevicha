@@ -72,20 +72,6 @@ if(!reduced){
   paintDrift();
 }
 
-const hero=document.querySelector('.hero');
-if(hero&&!reduced&&matchMedia('(min-width:901px)').matches){
-  const moveHeroTitle=event=>{
-    const rect=hero.getBoundingClientRect();
-    const x=(event.clientX-rect.left)/rect.width-.5;
-    const y=(event.clientY-rect.top)/rect.height-.5;
-    hero.style.setProperty('--hero-shift-x',`${x*7}px`);
-    hero.style.setProperty('--hero-shift-y',`${y*4}px`);
-    hero.style.setProperty('--hero-tilt-x',`${y*-.45}deg`);
-    hero.style.setProperty('--hero-tilt-y',`${x*.6}deg`);
-  };
-  hero.addEventListener('pointermove',moveHeroTitle,{passive:true});
-  hero.addEventListener('pointerleave',()=>['--hero-shift-x','--hero-shift-y','--hero-tilt-x','--hero-tilt-y'].forEach(name=>hero.style.removeProperty(name)));
-}
 
 document.querySelector('[data-year]').textContent=new Date().getFullYear();
 
