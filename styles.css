@@ -208,3 +208,12 @@ h1,h2,h3,blockquote,.hero-foot>p,.process-line span,.audience-list span,.marquee
 .hero-title .title-line i{position:relative;color:#f6f0e6;-webkit-text-fill-color:#f6f0e6;-webkit-text-stroke:0;text-shadow:none;filter:none;opacity:1}
 .hero-title .title-line i:before,.hero-title .title-line i:after{content:none!important;display:none!important}
 @media(max-width:900px){.hero-title{letter-spacing:-.03em;transform:none}.hero-title:before{left:-1.25rem;right:-1.25rem}}
+
+/* Three independent hero anchors: statement left, scroll centered, contact right. */
+.hero-foot{display:grid;grid-template-columns:minmax(15rem,1fr) auto minmax(15rem,1fr);align-items:end;padding-left:0;column-gap:clamp(2rem,5vw,7rem);width:100%}
+.hero-foot>p{grid-column:1;justify-self:start;max-width:18rem}
+.hero-actions{display:contents}
+.hero-actions .scroll-link{position:static;grid-column:2;justify-self:center;transform:none}
+.hero-actions .context-cta{position:static;grid-column:3;justify-self:end;min-width:13.5rem}
+@media(min-width:1900px){.hero-foot{padding-left:0}}
+@media(max-width:900px){.hero-foot{display:flex;padding-left:0;justify-content:space-between;gap:1.25rem}.hero-foot>p{max-width:11rem}.hero-actions{display:flex}.hero-actions .scroll-link,.hero-actions .context-cta{position:static;transform:none}}
