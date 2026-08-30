@@ -86,10 +86,15 @@ const closeContact=()=>{
   document.body.classList.remove('lead-open');
 };
 
-document.querySelectorAll('[data-open-contact]').forEach(trigger=>trigger.addEventListener('click',event=>{
-  event.preventDefault();
-  openContact();
-}));
+document.querySelectorAll('[data-open-contact]').forEach(trigger=>{
+  trigger.addEventListener('click',event=>{
+    event.preventDefault();
+    openContact();
+  });
+  if(trigger.matches('[role="button"]'))trigger.addEventListener('keydown',event=>{
+    if(event.key==='Enter'||event.key===' '){event.preventDefault();openContact()}
+  });
+});
 document.querySelector('[data-close-contact]').addEventListener('click',closeContact);
 contactDialog.addEventListener('click',event=>{if(event.target===contactDialog)closeContact()});
 contactDialog.addEventListener('close',()=>document.body.classList.remove('lead-open'));
