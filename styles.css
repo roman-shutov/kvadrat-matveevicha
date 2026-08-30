@@ -200,3 +200,14 @@ h1,h2,h3,blockquote,.hero-foot>p,.process-line span,.audience-list span,.marquee
   .audience{box-shadow:0 0 0 100vmax var(--black);clip-path:inset(0 -100vmax)}
   .conceal-copy,.audience-copy{padding-left:9rem;padding-right:9rem}
 }
+
+/* Hero wordmark as a dimensional editorial object. */
+.hero{--hero-shift-x:0px;--hero-shift-y:0px;--hero-shadow-x:10px;--hero-shadow-y:14px;--hero-tilt-x:0deg;--hero-tilt-y:0deg}
+.hero-title{font-family:Prata,"Times New Roman",serif;font-weight:400;letter-spacing:-.038em;transform:perspective(1300px) translate3d(var(--hero-shift-x),var(--hero-shift-y),0) rotateX(var(--hero-tilt-x)) rotateY(var(--hero-tilt-y));transform-origin:48% 70%;transition:transform .18s ease-out;isolation:isolate}
+.hero-title .title-line{overflow:visible;clip-path:inset(-.22em -.12em -.25em -.12em)}
+.hero-title .title-line i{position:relative;z-index:1;color:#f4efe5;background:linear-gradient(108deg,#d4c9b8 0%,#fffdf7 24%,#b6a48e 52%,#f5eee2 73%,#c8b8a3 100%);background-size:180% 100%;background-position:calc(50% + var(--hero-shift-x)) 50%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 2px 1px rgba(255,255,255,.08),0 14px 30px rgba(0,0,0,.28);filter:drop-shadow(0 1px 0 rgba(255,255,255,.16))}
+.hero-title .title-line i:before,.hero-title .title-line i:after{content:attr(data-text);position:absolute;inset:0;pointer-events:none}
+.hero-title .title-line i:before{z-index:-1;-webkit-text-fill-color:transparent;-webkit-text-stroke:1px rgba(190,143,102,.58);transform:translate3d(4px,6px,-1px);opacity:.72}
+.hero-title .title-line i:after{z-index:-2;-webkit-text-fill-color:rgba(3,3,2,.48);text-shadow:0 1.2rem 2.5rem rgba(0,0,0,.58);transform:translate3d(var(--hero-shadow-x),var(--hero-shadow-y),-2px);filter:blur(.45px)}
+@media(max-width:900px){.hero-title{letter-spacing:-.03em;transform:none}.hero-title .title-line i:before{transform:translate(3px,4px)}.hero-title .title-line i:after{transform:translate(6px,8px)}}
+@media(prefers-reduced-motion:reduce){.hero-title{transform:none;transition:none}}

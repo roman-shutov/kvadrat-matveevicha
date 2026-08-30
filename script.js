@@ -72,6 +72,23 @@ if(!reduced){
   paintDrift();
 }
 
+const hero=document.querySelector('.hero');
+if(hero&&!reduced&&matchMedia('(min-width:901px)').matches){
+  const moveHeroTitle=event=>{
+    const rect=hero.getBoundingClientRect();
+    const x=(event.clientX-rect.left)/rect.width-.5;
+    const y=(event.clientY-rect.top)/rect.height-.5;
+    hero.style.setProperty('--hero-shift-x',`${x*10}px`);
+    hero.style.setProperty('--hero-shift-y',`${y*6}px`);
+    hero.style.setProperty('--hero-shadow-x',`${10-x*14}px`);
+    hero.style.setProperty('--hero-shadow-y',`${14-y*10}px`);
+    hero.style.setProperty('--hero-tilt-x',`${y*-1.15}deg`);
+    hero.style.setProperty('--hero-tilt-y',`${x*1.45}deg`);
+  };
+  hero.addEventListener('pointermove',moveHeroTitle,{passive:true});
+  hero.addEventListener('pointerleave',()=>['--hero-shift-x','--hero-shift-y','--hero-shadow-x','--hero-shadow-y','--hero-tilt-x','--hero-tilt-y'].forEach(name=>hero.style.removeProperty(name)));
+}
+
 document.querySelector('[data-year]').textContent=new Date().getFullYear();
 
 const contactDialog=document.querySelector('.contact-dialog');
