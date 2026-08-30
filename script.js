@@ -102,3 +102,33 @@ document.querySelectorAll('[data-contact-zone]').forEach(zone=>zone.addEventList
   if(getSelection()?.toString())return;
   openContact();
 }));
+
+const craftHub=document.querySelector('.network-hub');
+const craftImage=craftHub?.querySelector('.network-hub-image');
+const craftTitle=craftHub?.querySelector('[data-hub-title]');
+const craftNodes=[...document.querySelectorAll('[data-craft-image]')];
+const showCraft=node=>{
+  const title=node.querySelector('h3')?.textContent||'';
+  const source=node.dataset.craftImage;
+  if(!source)return;
+  craftImage.src=source;
+  craftImage.alt=`Пример работы: ${title}`;
+  craftTitle.textContent=title;
+  craftHub.classList.add('is-preview');
+};
+const resetCraft=()=>craftHub?.classList.remove('is-preview');
+
+craftNodes.forEach(node=>{
+  node.tabIndex=0;
+  node.setAttribute('role','button');
+  node.setAttribute('aria-label',`Показать пример: ${node.querySelector('h3')?.textContent||''}`);
+  node.addEventListener('pointerenter',event=>{if(event.pointerType!=='touch')showCraft(node)});
+  node.addEventListener('pointerleave',event=>{if(event.pointerType!=='touch')resetCraft()});
+  node.addEventListener('focus',()=>showCraft(node));
+  node.addEventListener('blur',resetCraft);
+  node.addEventListener('click',()=>{
+    showCraft(node);
+    if(matchMedia('(max-width:700px)').matches)craftHub.scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});
+  });
+  node.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();showCraft(node)}});
+});
