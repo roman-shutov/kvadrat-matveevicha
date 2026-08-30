@@ -132,3 +132,26 @@ craftNodes.forEach(node=>{
   });
   node.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();showCraft(node)}});
 });
+
+const audienceImages=[...document.querySelectorAll('.audience-image>img')];
+const audienceItems=[...document.querySelectorAll('[data-audience-slide]')];
+const audienceCurrent=document.querySelector('[data-audience-current]');
+let audienceIndex=0;
+let audienceTimer;
+const showAudience=index=>{
+  audienceIndex=Number(index);
+  audienceImages.forEach((image,i)=>image.classList.toggle('is-active',i===audienceIndex));
+  audienceItems.forEach(item=>item.classList.toggle('is-active',Number(item.dataset.audienceSlide)===audienceIndex));
+  if(audienceCurrent)audienceCurrent.textContent=String(audienceIndex+1).padStart(2,'0');
+};
+const runAudience=()=>{
+  clearInterval(audienceTimer);
+  if(!reduced&&audienceImages.length>1)audienceTimer=setInterval(()=>showAudience((audienceIndex+1)%audienceImages.length),4800);
+};
+audienceItems.forEach(item=>{
+  item.tabIndex=0;
+  item.addEventListener('pointerenter',()=>{showAudience(item.dataset.audienceSlide);runAudience()});
+  item.addEventListener('focus',()=>{showAudience(item.dataset.audienceSlide);runAudience()});
+  item.addEventListener('click',()=>{showAudience(item.dataset.audienceSlide);runAudience()});
+});
+runAudience();
