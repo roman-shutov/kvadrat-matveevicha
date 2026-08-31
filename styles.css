@@ -217,3 +217,25 @@ h1,h2,h3,blockquote,.hero-foot>p,.process-line span,.audience-list span,.marquee
 .hero-actions .context-cta{position:static;grid-column:3;grid-row:1;justify-self:end;min-width:13.5rem}
 @media(min-width:1900px){.hero-foot{padding-left:0}}
 @media(max-width:900px){.hero-foot{display:flex;padding-left:0;justify-content:space-between;gap:1.25rem}.hero-foot>p{max-width:11rem}.hero-actions{display:flex}.hero-actions .scroll-link,.hero-actions .context-cta{position:static;transform:none}}
+
+/* Narrow-screen hero: keep the wordmark and all conversion controls inside the viewport. */
+@media(max-width:900px){
+  .hero{min-height:46rem}
+  .hero-content{padding:7.75rem 1.25rem max(1.5rem,env(safe-area-inset-bottom))}
+  .hero .overline{top:7.25rem;max-width:18rem}
+  .hero-title{width:100%;max-width:100%;font-size:clamp(3rem,14.4vw,5.4rem);line-height:.86;letter-spacing:-.052em}
+  .hero-title .title-line{width:100%;padding-right:.08em}
+  .hero-title .title-line.indent{padding-left:0}
+  .hero-foot{display:grid;grid-template-columns:minmax(0,1fr) 7rem;grid-template-rows:auto auto;align-items:end;gap:1rem 1.25rem;width:100%;margin-top:2.25rem}
+  .hero-foot>p{grid-column:1;grid-row:2;max-width:10.5rem;font-size:clamp(1rem,4.6vw,1.15rem);line-height:1.32}
+  .hero-actions{display:contents}
+  .hero-actions .context-cta{grid-column:1/-1;grid-row:1;width:100%;min-width:0;min-height:3rem;font-size:.5rem}
+  .hero-actions .scroll-link{grid-column:2;grid-row:2;justify-self:end;width:7rem}
+}
+@media(max-width:360px){
+  .hero-content{padding-left:1rem;padding-right:1rem}
+  .hero-title{font-size:14.1vw;letter-spacing:-.057em}
+  .hero-foot{grid-template-columns:minmax(0,1fr) 6.5rem;column-gap:1rem}
+  .hero-foot>p{max-width:9.5rem}
+  .hero-actions .scroll-link{width:6.5rem}
+}
